@@ -5,89 +5,13 @@
     <title>Salary</title>
 
 </head>
-<body style="margin: 0; height: 100vh; background: url('./bg.png')">
+<body style="margin: 0; height: 100vh">
 <div id="root"></div>
 <script defer crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script defer crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 <script defer src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
     const MainContent = () => {
-        const songs = [
-            {
-                type: "A",
-                songs: [
-                    'O.Z - Gants Udaa',//1
-                    'Vandebo - Mangar Tom Zurh',//2
-                    'TATAR ft Michelle - Jargaltai khos',//3
-                    'Young MoG - Naadii',//4
-                    'UKA x NENE - Us tsaital hamt',//5
-                    'Ginjin - Ene Much ft. Mrs M',//6
-                    'Seryoja x Vandebo - Do Re Mi Fa',//7
-                    'Gangbay - Gangan Tsagaan',//8
-                    'Ginjin & Mrs M - Boroo',//9
-                    'MVCHI - Let Me Down',//10
-                    'Vandebo ft. Enerel - Unana',//11
-                    'Tatar - Hamtdaa ft. Maraljingoo & Zoloo',//12
-                ]
-            },
-            {
-                type: "B",
-                songs: [
-                    'Ice top -- Urgelj hamtdaa',//1
-                    'Uka - Margaashiin Nar Luu Hamt Ayalah Uu',//2
-                    'Egshiglen - 100 huvi',//3
-                    'OPOZIT - Neeh Tiim GOY baidag Daa Tee',//4
-                    'Gee.Tulgat.Rokit Bay - Microphonii ard',//5
-                    'The Wasabies - Ү\'гүй',//6
-                    'Flash - Hairiin Nulims',//7
-                    'Ice top & Uuree - Uilah erhgui hair',//8
-                    'LUMINO - NAMAIG DAGAAD TSENGE',//9
-                    'Kiwi - Hot Line',//10
-                    'LUMINO - SENBII',//11
-                ]
-            },
-            {
-                type: "C",
-                songs: [
-                    'B.Oyunbat & R.Badralmaa - Zurhnii naran.mpg',//1
-                    'Banzragch - Миний Ардын Сэтгэл Цагаан',//2
-                    'С.Жавхлан - Таван тэсийн уянга',//3
-                    'Л.БОЛДБААТАР - Хун цагаан хайр',//4
-                    'Болдбаатар - Босоо хийморьтой эр хүн',//5
-                    'Iderjavkhlan & Onon - Chi biden hoyor',//6
-                    'С.Жавхлан - Хар хархан харц',//7
-                    'Javhlan - Alsad suugaa eej',//8
-                    'Хурд - Буцааж нэхэхгүй хайр',//9
-                    'Навчин дээрх шүүдэр',//10
-                    'Enhmend - Hamtdaa tuulya gesiimaa',//11
-                ]
-            },
-            {
-                type: "D",
-                songs: [
-                    'Wiz Khalifa - See You Again',//1
-                    'PSY - GANGNAM STYLE',//2
-                    'OneRepublic - Counting Stars',//3
-                    'Shakira - Waka Waka',//4
-                    'Eminem - Love The Way You Lie',//5
-                    'Jennifer Lopez - On The Floor',//6
-                    'Katy Perry - Roar',//7
-                    'Dr Dre - Still D.R.E',//8
-                    'Queen - We Will Rock You',//9
-                    'Michael Jackson - Smooth Criminal',//10
-                    'Eminem - Rap God',//11
-                    'The Weeknd - Blinding Lights',//12
-                    'RagnBone Man - Human',//13
-                    'Naughty Boy - La la la',//14
-                    'Ed Sheeran - Shape of You',//15
-                    'Luis Fonsi - Despacito',//16
-                    'The Weeknd - Starboy',//17
-                    'Hozier - Take Me To Church',//18
-                    'Lil Pump - Gucci Gang',//19
-                    'Justin Bieber - Baby',//20
-                ]
-            },
-        ];
 
         const Song = ({name, order}) => {
             const i = order + 1;
@@ -97,7 +21,15 @@
                 setState(!state);
             }
 
-            return <div onClick={onClick} style={{cursor: "pointer", display: "flex", border: "2px solid white", borderRadius: "12px", gap: 5, padding: "5px", height: "80px"}}>
+            return <div onClick={onClick} style={{
+                cursor: "pointer",
+                display: "flex",
+                border: "2px solid white",
+                borderRadius: "12px",
+                gap: 5,
+                padding: "5px",
+                height: "80px"
+            }}>
                 <img
                     style={{width: "40px", height: "40px", marginTop: "20px"}}
                     src="./music.png"
@@ -109,22 +41,26 @@
             </div>
         }
 
-        return (
-            <div style={{display: "flex", flexDirection: "row", gap: 10, width: '100%'}}>
-                {songs.map((songObj, i) => {
-                    return <div style={{display: "flex", gap: 10, width: '100%'}}>
-                        <div style={{display: "flex", flexDirection: "column", gap: 10, width: '100%'}}>
-                            <div style={{width: "100%", textAlign: "center", fontSize: "2rem"}}>{songObj.type}</div>
-                            {
-                                songObj.songs.map((song, sI) => {
-                                    return <Song key={i + "-" + sI} name={song} order={sI}/>
-                                })
-                            }
-                        </div>
-                        <div style={{borderLeft: "1px solid rgba(0, 0, 0, 0.4)"}}/>
-                    </div>
+        const dimention = Array.from({length: 25}, (_, i) => i);
+        const size = 16;
 
+        return (
+            <div style={{display: "flex", flexDirection: "column", width: '100%'}}>
+                {dimention.map((ii) => {
+                    return <div key={ii} style={{display: "flex", flexDirection: "row", width: '100%'}}>
+                        {dimention.map((i) => <div
+                            key={`${ii}-${i}`}
+                            style={{
+                                width: `${size}px`,
+                                height: `${size}px`,
+                                border: "1px solid rgba(0,0,0,0.5)",
+
+                            }}
+                        ></div>)}
+                    </div>
                 })}
+
+
             </div>
         );
     }
